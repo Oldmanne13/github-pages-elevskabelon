@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min programmeringsportfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         TOPPEN AF SIDEN
+         RET KUN TEKSTEN MELLEM <h1>...</h1> OG <p>...</p>
+         ========================================================= -->
+
+    <header class="top">
+        <h1>Min programmeringsportfolio</h1>
+        <h1>Programmering C </h1>
+        <h1>Navn: Jørn</h1>
+    </header>
+
+
+    <main class="container">
+
+        <!-- =====================================================
+             BLOK 1: INTRODUKTION
+             Ret overskriften og teksten.
+             ===================================================== -->
+
+        <section class="blok">
+            <h2>Om min portfolio</h2>
+
+            <p>
+                Her samler jeg mine programmeringsprojekter.
+                Jeg dokumenterer, hvad jeg har lavet, hvordan programmerne
+                virker, og hvad jeg har lært undervejs.
+            </p>
+        </section>
+
+
+        <!-- =====================================================
+             BLOK 2: PROJEKT
+             Kopiér HELE denne <section>...</section>, hvis du
+             vil oprette endnu et projekt.
+             ===================================================== -->
+
+        <section class="blok projekt">
+            <h2>Projekt 1: Blinkende LED</h2>
+
+            <h3>Opgaven</h3>
+            <p>
+                Mit mål var at få en LED til at blinke med et fast interval.
+            </p>
+
+            <h3>Sådan løste jeg opgaven</h3>
+            <p>
+                Jeg brugte en while-løkke, så programmet fortsætter med at
+                tænde og slukke LED'en.
+            </p>
+
+
+            <!-- BILLEDE
+                 1. Læg dit billede i mappen "billeder"
+                 2. Ret filnavnet efter src=
+                 3. Ret billedteksten
+            -->
+
+            <figure>
+                <div class="placeholder">
+                    Her kan du indsætte et billede fra Wokwi eller dit kredsløb
+                </div>
+
+                <!-- Når du har et rigtigt billede, kan du slette
+                     <div class="placeholder">...</div> ovenfor
+                     og fjerne kommentar-tegnene omkring linjen herunder:
+
+                <img src="billeder/mit-kredsloeb.png" alt="Mit kredsløb">
+                -->
+
+                <figcaption>
+                    Figur 1: Mit kredsløb.
+                </figcaption>
+            </figure>
+
+
+            <!-- KODEBLOK
+                 Skriv eller indsæt din Python-kode mellem
+                 <code> og </code>.
+            -->
+
+            <h3>Min kode</h3>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin("LED", Pin.OUT)
+
+while True:
+    led.toggle()
+    sleep(1)</code></pre>
+
+
+            <!-- LINK TIL WOKWI
+                 Ret kun adressen mellem citationstegnene efter href=
+                 og teksten mellem <a> og </a>.
+            -->
+
+            <p>
+                <a class="knap" href="https://wokwi.com/projects/473315362508579841">
+                    Åbn mit Wokwi-projekt
+                </a>
+            </p>
+
+
+            <h3>Test</h3>
+
+            <!-- TABEL
+                 Du kan ændre teksten inde i cellerne.
+                 Kopiér en <tr>...</tr>-blok for at tilføje flere tests.
+            -->
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test</th>
+                        <th>Forventning</th>
+                        <th>Resultat</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>LED tænder</td>
+                        <td>LED'en skal lyse</td>
+                        <td>Virker</td>
+                    </tr>
+
+                    <tr>
+                        <td>LED blinker</td>
+                        <td>Skifter hvert sekund</td>
+                        <td>Virker</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <h3>Hvad gik godt?</h3>
+            <p>
+                Skriv kort, hvad der virkede godt i projektet.
+            </p>
+
+            <h3>Hvad var svært?</h3>
+            <p>
+                Skriv kort om en fejl, udfordring eller noget, du skulle
+                undersøge nærmere.
+            </p>
+
+            <h3>Hvad lærte jeg?</h3>
+            <p>
+                Skriv 2–4 linjer om det vigtigste, du lærte.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             BLOK 3: REFLEKSION
+             Denne blok kan bruges efter et større forløb.
+             ===================================================== -->
+
+        <section class="blok">
+            <h2>Min refleksion</h2>
+
+            <p>
+                Det vigtigste, jeg har lært indtil nu, er ...
+            </p>
+
+            <p>
+                Næste gang vil jeg gerne blive bedre til ...
+            </p>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Lavet som en del af Programmering C</p>
+    </footer>
+
+</body>
+</html>
