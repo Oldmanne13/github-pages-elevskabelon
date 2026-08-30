@@ -37,12 +37,11 @@
              ===================================================== -->
 
         <section class="blok">
-            <h2>Om min portfolio</h2>
+            <h2>Opgaver i Python</h2>
 
             <p>
-                Her samler jeg mine programmeringsprojekter.
-                Jeg dokumenterer, hvad jeg har lavet, hvordan programmerne
-                virker, og hvad jeg har lært undervejs.
+                Her er de stillede opgaver og programmeringsprojekter i micropython.
+                Her mulighed for at hente eksempeler I kan bruge til at komme i gang med jeres egne projekter.
             </p>
         </section>
 
@@ -54,23 +53,40 @@
              ===================================================== -->
 
         <section class="blok projekt">
-            <h2>Projekt 1: Blinkende LED</h2>
+            <h2>Projekt 1: Blinkende LED/"hello world"</h2>
 
             <h3>Opgaven</h3>
             <p>
-                Mit mål var at få en LED til at blinke med et fast interval.
-            </p>
+                Projekt 1 indeholder flere små opgaver, som skal introducere til programmering. 
+                Skriv et program, der får den indbyggede LED til at blinke og skriv til terminalen i Wokwi.
+                Jo mere I leger med koden, jo mere lærer I. 
+                 
+               <p>Step 1: Skriv "Hello World" til terminalen.</p> 
+                <p>Step 2: Få LED'en til at blinke.</p>
+                <p>Step 3: Få LED'en til at blinke hurtigere.</p>
+                <p>Step 4: Få LED'en til at blinke langsommere.</p>
+                <p>Step 5: Få LED'en til at blinke i et mønster eg. SOS med spagettigkode.</p>
+                <p>Step 6: Få LED'en til at blinke i et mønster eg. SOS med kontrolstrukturer for-loop og if-else
+
+           </p>
                 
             
             <p>
-                <a class="knap" href="https://wokwi.com/projects/473315362508579841">
-                    Åbn mit Wokwi-projekt
+                <a class="knap" href="https://wokwi.com/projects/473772871078257665">
+                    Åbn mit start Wokwi-projekt
                 </a>
             </p>
-            <h3>Sådan løste jeg opgaven</h3>
+            <h3>Hjælp til opgaven</h3>
             <p>
-                Jeg brugte en while-løkke, så programmet fortsætter med at
-                tænde og slukke LED'en.
+            Figur 1 viser et kredsløb med en ESP32, hvor den indbyggede LED er forbundet til pin 2. For at få LED'en til at blinke, kan du bruge følgende kode:
+            <pre><code>from machine import Pin
+from time import sleep
+led = Pin(5, Pin.OUT)
+while True:
+    led.value(1)
+    sleep(1)
+    led.value(0)
+    sleep(1)   </code></pre>       
             </p>
 
 
@@ -82,7 +98,7 @@
 
             <figure>
   
-                <img src="billeder/test.png" alt="Mit kredsløb">
+                <img src="billeder/Blinkstart.png" alt="Mit kredsløb">
                 
 
                 <figcaption>
@@ -96,7 +112,7 @@
                  <code> og </code>.
             -->
 
-            <h3>Min kode</h3>
+            <h3>Alternativ kode</h3>
 
 <pre><code>from machine import Pin
 from time import sleep
