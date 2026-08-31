@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blinkende LED</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="top">
+    <h1>Blinkende LED</h1>
+    <p>MicroPython på ESP32</p>
+</header>
+
+<nav class="menu">
+    <a href="../index.html">Forside</a>
+    <a href="index.html">Hjælp</a>
+</nav>
+
+
+<main class="container">
+
+    <section class="blok">
+
+        <h2>Grundlæggende eksempel</h2>
+
+        <p>
+            Først importerer vi Pin og sleep.
+            Derefter opretter vi LED'en som output.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin(5, Pin.OUT)
+
+while True:
+    led.value(1)
+    sleep(1)
+
+    led.value(0)
+    sleep(1)
+</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Kortere løsning</h2>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin("LED", Pin.OUT)
+
+while True:
+    led.toggle()
+    sleep(1)
+</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <a class="knap" href="index.html">
+            ← Tilbage til hjælp
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+</html>

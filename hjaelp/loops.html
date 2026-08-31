@@ -1,0 +1,391 @@
+```html
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Løkker i MicroPython</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="top">
+    <h1>Løkker</h1>
+    <p>MicroPython på ESP32</p>
+</header>
+
+<nav class="menu">
+    <a href="../index.html">Forside</a>
+    <a href="index.html">Hjælp</a>
+</nav>
+
+
+<main class="container">
+
+    <section class="blok">
+
+        <h2>Hvad er en løkke?</h2>
+
+        <p>
+            En løkke bruges til at gentage den samme kode flere gange.
+        </p>
+
+        <p>
+            I Python og MicroPython bruger man især
+            <code>while</code> og <code>for</code>.
+        </p>
+
+<pre><code>while True:
+    print("Hej")
+</code></pre>
+
+        <p>
+            Denne løkke fortsætter, så længe programmet kører.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>While-løkke</h2>
+
+        <p>
+            En <code>while</code>-løkke gentager kode,
+            så længe en betingelse er sand.
+        </p>
+
+<pre><code>tal = 0
+
+while tal < 5:
+    print(tal)
+    tal = tal + 1
+</code></pre>
+
+        <p>
+            Programmet udskriver tallene fra 0 til 4.
+        </p>
+
+        <p>
+            Variablen <code>tal</code> bliver én større,
+            hver gang løkken kører.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Uendelig while-løkke</h2>
+
+        <p>
+            På en ESP32 bruger man ofte
+            <code>while True</code>, fordi programmet skal køre hele tiden.
+        </p>
+
+<pre><code>while True:
+    print("Programmet kører")
+</code></pre>
+
+        <p>
+            <code>True</code> er altid sand,
+            så løkken stopper ikke af sig selv.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Blinkende LED med while</h2>
+
+        <p>
+            En uendelig løkke kan bruges til at få en LED
+            til at blinke hele tiden.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin(5, Pin.OUT)
+
+while True:
+    led.value(1)
+    sleep(1)
+
+    led.value(0)
+    sleep(1)
+</code></pre>
+
+        <p>
+            Når programmet når bunden af løkken,
+            starter det automatisk forfra.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>For-løkke</h2>
+
+        <p>
+            En <code>for</code>-løkke bruges ofte,
+            når man ved, hvor mange gange noget skal gentages.
+        </p>
+
+<pre><code>for i in range(5):
+    print(i)
+</code></pre>
+
+        <p>
+            Programmet udskriver:
+        </p>
+
+<pre><code>0
+1
+2
+3
+4</code></pre>
+
+        <p>
+            <code>range(5)</code> giver værdierne fra 0 til 4.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Start og slut med range</h2>
+
+        <p>
+            Man kan også bestemme, hvilket tal
+            en <code>for</code>-løkke skal starte ved.
+        </p>
+
+<pre><code>for i in range(1, 6):
+    print(i)
+</code></pre>
+
+        <p>
+            Programmet udskriver tallene fra 1 til 5.
+        </p>
+
+        <p>
+            Det sidste tal i <code>range()</code>
+            bliver ikke taget med.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Spring mellem tallene</h2>
+
+        <p>
+            Et tredje tal i <code>range()</code>
+            bestemmer, hvor stort springet skal være.
+        </p>
+
+<pre><code>for i in range(0, 11, 2):
+    print(i)
+</code></pre>
+
+        <p>
+            Programmet udskriver:
+        </p>
+
+<pre><code>0
+2
+4
+6
+8
+10</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Blink LED et bestemt antal gange</h2>
+
+        <p>
+            En <code>for</code>-løkke er nyttig,
+            hvis LED'en kun skal blinke et bestemt antal gange.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin(5, Pin.OUT)
+
+for i in range(5):
+    led.value(1)
+    sleep(0.5)
+
+    led.value(0)
+    sleep(0.5)
+</code></pre>
+
+        <p>
+            Her blinker LED'en 5 gange.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Løkke med en variabel</h2>
+
+        <p>
+            Antallet af gentagelser kan gemmes i en variabel.
+        </p>
+
+<pre><code>antal = 10
+
+for i in range(antal):
+    print("Gentagelse", i)
+</code></pre>
+
+        <p>
+            Hvis programmet skal gentage koden flere gange,
+            behøver man kun at ændre værdien af <code>antal</code>.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>While og if sammen</h2>
+
+        <p>
+            Løkker og <code>if</code>-sætninger bruges ofte sammen.
+        </p>
+
+<pre><code>tal = 0
+
+while tal < 10:
+
+    if tal == 5:
+        print("Nu er tallet 5")
+
+    print(tal)
+
+    tal = tal + 1
+</code></pre>
+
+        <p>
+            Løkken gentager koden,
+            mens <code>if</code>-sætningen undersøger værdien undervejs.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>While med en knap</h2>
+
+        <p>
+            På en ESP32 kan en løkke hele tiden kontrollere,
+            om en knap bliver trykket ned.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin(5, Pin.OUT)
+knap = Pin(4, Pin.IN, Pin.PULL_UP)
+
+while True:
+
+    if knap.value() == 0:
+        led.value(1)
+    else:
+        led.value(0)
+
+    sleep(0.1)
+</code></pre>
+
+        <p>
+            Programmet kontrollerer knappen igen og igen.
+            Når knappen trykkes ned, tændes LED'en.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>break</h2>
+
+        <p>
+            Kommandoen <code>break</code> kan bruges
+            til at stoppe en løkke.
+        </p>
+
+<pre><code>tal = 0
+
+while True:
+    print(tal)
+
+    tal = tal + 1
+
+    if tal == 5:
+        break
+
+print("Løkken er slut")
+</code></pre>
+
+        <p>
+            Når <code>tal</code> bliver 5,
+            stopper <code>while</code>-løkken.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Husk indrykningen</h2>
+
+        <p>
+            Koden, der skal gentages,
+            skal være rykket ind under løkken.
+        </p>
+
+<pre><code>for i in range(3):
+    print("Denne linje gentages")
+
+print("Denne linje kører kun én gang")
+</code></pre>
+
+        <p>
+            Indrykningen fortæller Python,
+            hvilken kode der hører til løkken.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <a class="knap" href="index.html">
+            ← Tilbage til hjælp
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+</html>
+```

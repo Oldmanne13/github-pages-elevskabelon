@@ -1,0 +1,255 @@
+```html
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Variabler i MicroPython</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="top">
+    <h1>Variabler</h1>
+    <p>MicroPython på ESP32</p>
+</header>
+
+<nav class="menu">
+    <a href="../index.html">Forside</a>
+    <a href="index.html">Hjælp</a>
+</nav>
+
+
+<main class="container">
+
+    <section class="blok">
+
+        <h2>Hvad er en variabel?</h2>
+
+        <p>
+            En variabel bruges til at gemme en værdi.
+            Variablen får et navn, som vi senere kan bruge i programmet.
+        </p>
+
+<pre><code>alder = 16
+navn = "Peter"
+temperatur = 22.5
+</code></pre>
+
+        <p>
+            Her indeholder variablen <code>alder</code> tallet 16,
+            <code>navn</code> indeholder teksten "Peter", og
+            <code>temperatur</code> indeholder tallet 22.5.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Tal</h2>
+
+        <p>
+            Variabler kan bruges til at gemme tal.
+        </p>
+
+<pre><code>tal1 = 10
+tal2 = 5
+
+resultat = tal1 + tal2
+
+print(resultat)
+</code></pre>
+
+        <p>
+            Programmet udskriver:
+        </p>
+
+<pre><code>15</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Tekst</h2>
+
+        <p>
+            En variabel kan også indeholde tekst.
+            Tekst skrives mellem anførselstegn.
+        </p>
+
+<pre><code>navn = "Anna"
+
+print(navn)
+</code></pre>
+
+        <p>
+            Man kan også kombinere tekst og variabler:
+        </p>
+
+<pre><code>navn = "Anna"
+
+print("Hej", navn)
+</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Sand eller falsk</h2>
+
+        <p>
+            En variabel kan indeholde værdien
+            <code>True</code> eller <code>False</code>.
+        </p>
+
+<pre><code>led_taendt = True
+
+print(led_taendt)
+</code></pre>
+
+        <p>
+            Denne type variabel kaldes en boolean.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Ændre værdien af en variabel</h2>
+
+        <p>
+            En variabel kan få en ny værdi undervejs i programmet.
+        </p>
+
+<pre><code>tal = 5
+
+print(tal)
+
+tal = 10
+
+print(tal)
+</code></pre>
+
+        <p>
+            Først er værdien 5. Derefter ændres den til 10.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Tæller</h2>
+
+        <p>
+            Variabler bruges ofte som tællere.
+        </p>
+
+<pre><code>antal = 0
+
+while antal < 5:
+    print(antal)
+
+    antal = antal + 1
+</code></pre>
+
+        <p>
+            Variablen <code>antal</code> bliver én større,
+            hver gang løkken kører.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Variabler og LED</h2>
+
+        <p>
+            Variabler kan gøre et program lettere at ændre.
+            Her gemmer vi både pin-nummeret og ventetiden i variabler.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led_pin = 5
+ventetid = 1
+
+led = Pin(led_pin, Pin.OUT)
+
+while True:
+    led.value(1)
+    sleep(ventetid)
+
+    led.value(0)
+    sleep(ventetid)
+</code></pre>
+
+        <p>
+            Hvis LED'en skal blinke hurtigere, behøver vi kun
+            at ændre værdien af <code>ventetid</code>.
+        </p>
+
+<pre><code>ventetid = 0.2</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Eksempel med flere variabler</h2>
+
+        <p>
+            Her bruger vi variabler til både pin, ventetid
+            og antal blink.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led_pin = 5
+ventetid = 0.5
+antal_blink = 10
+
+led = Pin(led_pin, Pin.OUT)
+
+for i in range(antal_blink):
+    led.value(1)
+    sleep(ventetid)
+
+    led.value(0)
+    sleep(ventetid)
+</code></pre>
+
+        <p>
+            LED'en blinker 10 gange.
+            Hvis den skal blinke 20 gange, kan man blot ændre:
+        </p>
+
+<pre><code>antal_blink = 20</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <a class="knap" href="index.html">
+            ← Tilbage til hjælp
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+</html>
+```

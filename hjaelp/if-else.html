@@ -1,0 +1,302 @@
+```html
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>If-else i MicroPython</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="top">
+    <h1>If-else</h1>
+    <p>MicroPython på ESP32</p>
+</header>
+
+<nav class="menu">
+    <a href="../index.html">Forside</a>
+    <a href="index.html">Hjælp</a>
+</nav>
+
+
+<main class="container">
+
+    <section class="blok">
+
+        <h2>Hvad er if?</h2>
+
+        <p>
+            En <code>if</code>-sætning bruges til at træffe en beslutning
+            i programmet.
+        </p>
+
+        <p>
+            Koden under <code>if</code> bliver kun udført,
+            hvis betingelsen er sand.
+        </p>
+
+<pre><code>tal = 10
+
+if tal > 5:
+    print("Tallet er større end 5")
+</code></pre>
+
+        <p>
+            Da variablen <code>tal</code> indeholder værdien 10,
+            er betingelsen sand.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>If og else</h2>
+
+        <p>
+            Med <code>else</code> kan programmet gøre noget andet,
+            hvis betingelsen ikke er sand.
+        </p>
+
+<pre><code>tal = 3
+
+if tal > 5:
+    print("Tallet er større end 5")
+else:
+    print("Tallet er 5 eller mindre")
+</code></pre>
+
+        <p>
+            Her bliver koden under <code>else</code> udført,
+            fordi 3 ikke er større end 5.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Sammenligninger</h2>
+
+        <p>
+            I en <code>if</code>-sætning kan man sammenligne værdier
+            på forskellige måder.
+        </p>
+
+<pre><code>tal == 10    # lig med
+tal != 10    # ikke lig med
+tal > 10     # større end
+tal < 10     # mindre end
+tal >= 10    # større end eller lig med
+tal <= 10    # mindre end eller lig med
+</code></pre>
+
+        <p>
+            Bemærk, at man bruger <code>==</code> til at sammenligne
+            to værdier.
+        </p>
+
+<pre><code>tal = 10
+
+if tal == 10:
+    print("Tallet er 10")
+</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Flere muligheder med elif</h2>
+
+        <p>
+            Hvis der er flere mulige betingelser,
+            kan man bruge <code>elif</code>.
+        </p>
+
+<pre><code>temperatur = 22
+
+if temperatur > 25:
+    print("Det er varmt")
+
+elif temperatur > 15:
+    print("Temperaturen er behagelig")
+
+else:
+    print("Det er koldt")
+</code></pre>
+
+        <p>
+            Programmet undersøger betingelserne oppefra og ned.
+            Når en betingelse er sand, bliver dens kode udført.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>If med en variabel</h2>
+
+        <p>
+            En boolean kan indeholde værdien
+            <code>True</code> eller <code>False</code>.
+        </p>
+
+<pre><code>led_taendt = True
+
+if led_taendt:
+    print("LED'en er tændt")
+else:
+    print("LED'en er slukket")
+</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>If-else og LED</h2>
+
+        <p>
+            Her bruger vi en variabel til at bestemme,
+            om LED'en skal være tændt eller slukket.
+        </p>
+
+<pre><code>from machine import Pin
+
+led = Pin(5, Pin.OUT)
+
+led_taendt = True
+
+if led_taendt:
+    led.value(1)
+else:
+    led.value(0)
+</code></pre>
+
+        <p>
+            Hvis <code>led_taendt</code> er <code>True</code>,
+            bliver LED'en tændt.
+        </p>
+
+        <p>
+            Hvis værdien ændres til <code>False</code>,
+            bliver LED'en slukket.
+        </p>
+
+<pre><code>led_taendt = False</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>If-else med en knap</h2>
+
+        <p>
+            En <code>if</code>-sætning kan bruges til at kontrollere,
+            om en knap er trykket ned.
+        </p>
+
+<pre><code>from machine import Pin
+from time import sleep
+
+led = Pin(5, Pin.OUT)
+knap = Pin(4, Pin.IN, Pin.PULL_UP)
+
+while True:
+
+    if knap.value() == 0:
+        led.value(1)
+
+    else:
+        led.value(0)
+
+    sleep(0.1)
+</code></pre>
+
+        <p>
+            Når knappen trykkes ned, bliver værdien 0,
+            og LED'en bliver tændt.
+        </p>
+
+        <p>
+            Når knappen ikke er trykket ned,
+            bliver LED'en slukket.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Eksempel med temperatur</h2>
+
+        <p>
+            If-else kan også bruges til at reagere på målinger
+            fra en sensor.
+        </p>
+
+<pre><code>temperatur = 28
+
+if temperatur >= 30:
+    print("Temperaturen er høj")
+
+elif temperatur >= 20:
+    print("Temperaturen er normal")
+
+else:
+    print("Temperaturen er lav")
+</code></pre>
+
+        <p>
+            Her vælger programmet en handling afhængigt
+            af temperaturen.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>Husk indrykningen</h2>
+
+        <p>
+            Python og MicroPython bruger indrykning til at vise,
+            hvilken kode der hører til en <code>if</code>-sætning.
+        </p>
+
+<pre><code>tal = 10
+
+if tal > 5:
+    print("Denne linje hører til if")
+
+print("Denne linje kører altid")
+</code></pre>
+
+        <p>
+            Linjen under <code>if</code> skal derfor rykkes ind.
+        </p>
+
+    </section>
+
+
+    <section class="blok">
+
+        <a class="knap" href="index.html">
+            ← Tilbage til hjælp
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+</html>
+```
