@@ -872,7 +872,86 @@ while True:
         </section>
 
 
+<section class="blok projekt">
+            <h2>Lidt lir "Neopixels"</h2>
 
+            <h3>Opgaven</h3>
+            <p>
+                Her skal I lege med Neopixels. 
+                I kan bruge koden fra Wokwi projektet og ændre på den, så I kan få jeres egne farver og mønstre.
+
+                
+                <h4>Dokumentation</h4>
+
+                <p>Step 10: Kommentér koden og lav en testplan.</p>
+               </p>
+                
+            
+             <p>
+                <a class="knap" href="hjaelp/index.html">
+                    ← Til hjælp           </a>
+            </p>
+
+
+
+
+
+            <!-- BILLEDE
+                 1. Læg dit billede i mappen "billeder"
+                 2. Ret filnavnet efter src=
+                 3. Ret billedteksten
+            -->
+
+            <figure>
+  
+                <img src="billeder/Neopixels.png" alt="Mit kredsløb">
+                
+
+                <figcaption>
+                    Figur 1: Neopixels kredsløb.
+                </figcaption>
+            </figure>
+
+        <h3>kode tips i random orden</h3>
+
+            <pre><code> 
+        from machine import Pin
+        import neopixel
+        from time import sleep
+
+
+        antal_led = 8
+        pin = 39
+
+        leds = neopixel.NeoPixel(Pin(pin), antal_led)
+
+        while True:
+  
+            for i in range (antal_led):
+                leds[i] = (255, 0, 0)
+                # Send data til LED'erne
+                leds.write()
+                sleep(0.5)
+        
+                </code></pre>
+            <p>
+                <a class="knap" href="https://docs.python.org/3/tutorial/introduction.html">
+                    Åbn Python-dokumentation
+                </a>
+            </p>
+            <p>
+                <a class="knap" href="hjaelp/index.html">
+                    ← Til hjælp           </a>
+            </p>
+          
+            
+            <h3>Kan I evt. kombinere Neopixels med andre komponenter?</h3>
+            <p>
+                Skriv kort, hvad der virkede godt i projektet.
+            </p>
+
+            
+        </section>
 
 
 
