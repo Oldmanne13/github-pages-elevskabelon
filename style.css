@@ -52,7 +52,42 @@ body {
 }
 
 
+.pwm-simulator {
+    margin-top: 20px;
+}
 
+.pwm-simulator label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.pwm-simulator input[type="range"] {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+#pwmCanvas {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+
+    background: #f5f5f5;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    margin-bottom: 10px;
+}
+
+.pwm-info {
+    display: flex;
+    gap: 25px;
+
+    margin-bottom: 20px;
+
+    font-size: 0.9rem;
+}
 
 
 

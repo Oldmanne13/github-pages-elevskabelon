@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Passiv Buzzer</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="top">
+    <h1>Passiv Buzzer</h1>
+    <p>MicroPython på ESP32</p>
+</header>
+
+<nav class="menu">
+    <a href="../index.html">Forside</a>
+    <a href="index.html">Hjælp</a>
+</nav>
+
+<main class="container">
+
+    <section class="blok">
+
+        <h2>Passiv Buzzer</h2>
+
+        <p>
+            I nærværende eksempel anvendes en passiv buzzer.
+            Den passive buzzer bruger PWM (Pulse Width Modulation) til at
+            generere lyd ved at tænde og slukke buzzeren med en given frekvens.
+
+            PWM er en teknik, hvor man kan styre et digitalt signal ved at
+            ændre pulsernes bredde og frekvens.
+
+            I dette eksempel holder vi duty cycle fast på 50 % og ændrer
+            frekvensen for at ændre tonen.
+
+            ESP32 sender derfor et firkantsignal, som skifter mellem
+            0 V og 3,3 V. Frekvensen af dette signal bestemmer,
+            hvor hurtigt buzzeren vibrerer og dermed tonehøjden.
+        </p>
+
+<pre><code>from machine import Pin, PWM
+from time import sleep
+
+buzzer = PWM(Pin(15))       # Tilslut buzzer til GPIO 15
+buzzer.freq(1000)           # Indstil frekvensen til 1000 Hz
+
+while True:
+    buzzer.duty(512)         # 50 % duty cycle
+    sleep(1)
+
+    buzzer.duty(0)           # Sluk buzzeren
+    sleep(1)
+</code></pre>
+
+    </section>
+
+
+    <section class="blok">
+
+        <h2>PWM-simulering</h2>
+
+        <p>
+            Flyt skyderen for at ændre PWM-frekvensen.
+            Duty cycle er fast på 50 %, mens frekvensen bestemmer tonehøjden.
+        </p>
+
+        <div class="pwm-simulator">
+
+            <label for="frekvens">
+                Frekvens:
+                <strong>
+                    <span id="frekvensTekst">440</span> Hz
+                </strong>
+            </label>
+
+            <input
+                type="range"
+                id="frekvens"
+                min="100"
+                max="2000"
+                value="440"
+                step="10"
+            >
+
+            <canvas
+                id="pwmCanvas"
+                width="700"
+                height="220">
+            </canvas>
+
+            <div class="pwm-info">
+                <span>LOW: 0 V</span>
+                <span>HIGH: 3,3 V</span>
+                <span>Duty cycle: 50 %</span>
+            </div>
+
+            <button class="knap" id="lydKnap">
+                Afspil tone
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="blok">
+
+        <a class="knap" href="index.html">
+            ← Tilbage til hjælp
+        </a>
+
+        <a
+            class="knap"
+            href="https://wokwi.com/projects/473947570969950209">
+            ← Til Wokwi projekt
+        </a>
+
+    </section>
+
+</main>
+
+
+<script>
+
+const slider = document.getElementById("frekvens");
+const frekvensTekst = document.getElementById("frekvensTekst");
+const canvas = document.getElementById("pwmCanvas");
+const ctx = canvas.getContext("2d");
+const lydKnap = document.getElementById("lydKnap");
+
+let audioContext = null;
+let oscillator = null;
+
+
+/* Tegn PWM-signal */
+function tegnPWM() {
+
+    const frekvens = Number(slider.value);
+
+    frekvensTekst.textContent = frekvens;
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    const top = 50;
+    const bund = 170;
+
+    const startX = 60;
+    const slutX = 680;
+
+    const bredde = slutX - startX;
+
+
+    /* Akser */
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+
+    ctx.moveTo(startX, 20);
+    ctx.lineTo(startX, 190);
+
+    ctx.lineTo(slutX, 190);
+
+    ctx.stroke();
+
+
+    /* Tekst */
+    ctx.font = "14px Arial";
+
+    ctx.fillText(
+        "3,3 V",
+        10,
+        top + 5
+    );
+
+    ctx.fillText(
+        "0 V",
+        20,
+        bund + 5
+    );
+
+    ctx.fillText(
+        "Tid →",
+        625,
+        210
+    );
+
+
+    /*
+        Flere perioder vises ved højere frekvens.
+    */
+
+    const antalPerioder = Math.max(
+        1,
+        Math.round(frekvens / 200)
+    );
+
+    const periode = bredde / antalPerioder;
+
+    let x = startX;
+
+
+    /* PWM-signal */
+    ctx.beginPath();
+
+    ctx.moveTo(x, bund);
+
+    for (
+        let i = 0;
+        i < antalPerioder;
+        i++
+    ) {
+
+        /* LOW -> HIGH */
+        ctx.lineTo(
+            x,
+            top
+        );
+
+        /* HIGH i 50 % */
+        ctx.lineTo(
+            x + periode / 2,
+            top
+        );
+
+        /* HIGH -> LOW */
+        ctx.lineTo(
+            x + periode / 2,
+            bund
+        );
+
+        /* LOW i 50 % */
+        ctx.lineTo(
+            x + periode,
+            bund
+        );
+
+        x += periode;
+    }
+
+
+    ctx.lineWidth = 3;
+
+    ctx.stroke();
+
+
+    /* Beregn periodetid */
+
+    const periodeTid =
+        1000 / frekvens;
+
+
+    ctx.font = "16px Arial";
+
+    ctx.fillText(
+        "T = " +
+        periodeTid.toFixed(2) +
+        " ms",
+        500,
+        30
+    );
+}
+
+
+/* Slider ændres */
+slider.addEventListener(
+    "input",
+    function () {
+
+        tegnPWM();
+
+        if (oscillator) {
+
+            oscillator.frequency.value =
+                Number(slider.value);
+        }
+    }
+);
+
+
+/* Afspil / stop tone */
+lydKnap.addEventListener(
+    "click",
+    function () {
+
+        if (!oscillator) {
+
+            audioContext =
+                new AudioContext();
+
+
+            oscillator =
+                audioContext.createOscillator();
+
+
+            const gain =
+                audioContext.createGain();
+
+
+            oscillator.type =
+                "square";
+
+
+            oscillator.frequency.value =
+                Number(slider.value);
+
+
+            /* Lav lydstyrke */
+            gain.gain.value = 0.05;
+
+
+            oscillator.connect(gain);
+
+            gain.connect(
+                audioContext.destination
+            );
+
+
+            oscillator.start();
+
+
+            lydKnap.textContent =
+                "Stop tone";
+
+        } else {
+
+            oscillator.stop();
+
+            oscillator = null;
+
+
+            if (audioContext) {
+
+                audioContext.close();
+            }
+
+
+            audioContext = null;
+
+
+            lydKnap.textContent =
+                "Afspil tone";
+        }
+    }
+);
+
+
+/* Tegn første signal */
+tegnPWM();
+
+</script>
+
+</body>
+
+</html>
