@@ -89,7 +89,162 @@ body {
     font-size: 0.9rem;
 }
 
+/* =========================================================
+   KODE-PUSLESPIL
+   ========================================================= */
 
+.kode-puslespil {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+
+/* Kommentarbunken */
+
+.kommentar-felt {
+    background: #eef2f7;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.kommentar-felt h4 {
+    margin-top: 0;
+}
+
+
+/* Selve puslespilsbrikken */
+
+.puslebrik {
+    position: relative;
+
+    display: block;
+    width: 100%;
+
+    margin-bottom: 15px;
+    padding: 15px 25px 15px 15px;
+
+    border: 3px solid #0a3ca8;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    font-size: 1rem;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+/* "Knoppen" på puslespilsbrikken */
+
+.puslebrik::after {
+    content: "";
+
+    position: absolute;
+
+    right: -13px;
+    top: 50%;
+
+    width: 24px;
+    height: 24px;
+
+    background: #ffffff;
+
+    border: 3px solid #0a3ca8;
+    border-left: none;
+
+    border-radius: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+.puslebrik:hover {
+    background: #e0ecff;
+}
+
+
+.puslebrik.valgt {
+    background: #fff3a0;
+    outline: 4px solid #f59e0b;
+}
+
+
+/* Kodeområder */
+
+.kode-del {
+    margin-bottom: 25px;
+}
+
+
+.kode-del pre {
+    margin-bottom: 0;
+    border-radius: 8px 8px 0 0;
+}
+
+
+/* Pladsen hvor brikken skal sidde */
+
+.kommentar-plads {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 3px dashed #0a3ca8;
+    border-top: none;
+
+    border-radius: 0 0 8px 8px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    text-align: left;
+    font-size: 1rem;
+}
+
+
+.kommentar-plads:hover {
+    background: #e0ecff;
+}
+
+
+/* Feedback */
+
+.kode-del.rigtig .kommentar-plads {
+    background: #d1fae5;
+    border-color: #15803d;
+}
+
+
+.kode-del.forkert .kommentar-plads {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+
+
+#puslespilFeedback {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* Mobil */
+
+@media (max-width: 750px) {
+
+    .kode-puslespil {
+        grid-template-columns: 1fr;
+    }
+
+}
 
 
 

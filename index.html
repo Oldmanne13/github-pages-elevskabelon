@@ -557,8 +557,8 @@ while True:
                 <p>Step 5: beregn afstanden ved hjælp af tiden og hastigheden af lyd.</p>
                 <p>Step 6: print afstanden til terminalen.</p>
                 <p>Step 7: gentag målingen i en løkke.</p>
-                <p>step 8: tilføj en forsinkelse mellem målinger.</p>
-                <p>Step 9: tilføj en LED der lyser når afstanden er mindre end en bestemt værdi.</p>
+                <p>tilføj 1: tilføj en forsinkelse mellem målinger.</p>
+                <p>tilføj 2: tilføj en LED der lyser når afstanden er mindre end en bestemt værdi.</p>
 
                 <h4>Dokumentation</h4>
 
@@ -871,6 +871,230 @@ while True:
 
         </section>
 
+<section class="blok projekt">
+    <h2>Projekt: 🧩 Kommentar-puslespil</h2>
+
+    <h3>Opgaven</h3>
+
+    <p>
+        I denne opgave skal I arbejde med kommentarer i Python.
+        En kommentar bruges til at forklare, hvad koden gør. Men først tester i koden i Wokwi.
+        Som I kan se er det ikke den ESP32, som I har arbejdet med tidligere. Det er en ESP32 med en NeoPixel-ring med 16 LEDs.
+        Koden er eksempel kode givet af Wokwi. I skal nu placere de rigtige kommentarer ved den rigtige kodeblok.
+        Test koden i Wokwi og se hvad der sker. I kan ændre på koden og se hvad der sker. Prøv forklar koden inden testen. 
+    </p>
+
+
+    <p>
+        <a class="knap" href="https://wokwi.com/projects/474091603998983169">
+                    ← Til hjælp           </a>
+    </p>
+
+
+
+    <p>
+        Kommentarerne ligger som puslespilsbrikker i tilfældig rækkefølge.
+        Placér hver kommentar ved den kodeblok, som den passer til.
+    </p>
+
+    <p>
+        Når alle kommentarer er placeret, kan I tjekke jeres svar.
+    </p>
+
+    <!-- Her indsættes selve puslespillet -->
+     <h3>🧩 Puslespil: Hvad gør koden?</h3>
+
+<p>
+    Dette er din første opgave med kommentarer i kode.
+    En kommentar forklarer, hvad en del af programmet gør.
+</p>
+
+<p>
+    <strong>Opgave:</strong>
+    Klik på en puslespilsbrik og klik derefter på den kodeblok,
+    hvor du mener kommentaren hører til.
+</p>
+
+
+<div class="kode-puslespil">
+
+    <!-- =====================================================
+         KOMMENTARER
+         JavaScript blander automatisk rækkefølgen.
+         ===================================================== -->
+
+    <div class="kommentar-felt">
+
+        <h4>Kommentarer</h4>
+
+        <div id="kommentarer">
+
+            <button class="puslebrik"
+                    data-svar="import">
+                Importerer de biblioteker, som programmet skal bruge.
+            </button>
+
+            <button class="puslebrik"
+                    data-svar="setup">
+                Opretter forbindelse til NeoPixel-ringen med 16 LEDs på pin 4.
+            </button>
+
+            <button class="puslebrik"
+                    data-svar="farver">
+                Opretter variabler til antallet af pixels og RGB-farverne.
+            </button>
+
+            <button class="puslebrik"
+                    data-svar="mix">
+                Tænder NeoPixels én efter én med den valgte RGB-farve.
+            </button>
+
+            <button class="puslebrik"
+                    data-svar="input">
+                Spørger brugeren hvor meget rød, grøn og blå der skal være i farven.
+            </button>
+
+            <button class="puslebrik"
+                    data-svar="loop">
+                Gentager lysshowet igen og igen.
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         KODE
+         ===================================================== -->
+
+    <div class="puslespil-kode">
+
+
+        <div class="kode-del" data-korrekt="import">
+
+<pre><code>from machine import Pin
+from utime import sleep
+import neopixel</code></pre>
+
+            <button class="kommentar-plads">
+                🧩 Placér kommentar her
+            </button>
+
+        </div>
+
+
+
+        <div class="kode-del" data-korrekt="setup">
+
+<pre><code>p = Pin(4, Pin.OUT)
+n = neopixel.NeoPixel(p, 16)</code></pre>
+
+            <button class="kommentar-plads">
+                🧩 Placér kommentar her
+            </button>
+
+        </div>
+
+
+
+        <div class="kode-del" data-korrekt="farver">
+
+<pre><code>numP = 16
+
+r = 0
+g = 0
+b = 0</code></pre>
+
+            <button class="kommentar-plads">
+                🧩 Placér kommentar her
+            </button>
+
+        </div>
+
+
+
+        <div class="kode-del" data-korrekt="mix">
+
+<pre><code>def taend_mix():
+
+    for i in range(numP):
+
+        n[i] = (r, g, b)
+
+        n.write()
+
+        sleep(0.5)</code></pre>
+
+            <button class="kommentar-plads">
+                🧩 Placér kommentar her
+            </button>
+
+        </div>
+
+
+
+        <div class="kode-del" data-korrekt="input">
+
+<pre><code>r = int(input("hvor meget rød"))
+g = int(input("hvor meget grøn"))
+b = int(input("hvor meget blå?"))</code></pre>
+
+            <button class="kommentar-plads">
+                🧩 Placér kommentar her
+            </button>
+
+        </div>
+
+
+
+        <div class="kode-del" data-korrekt="loop">
+
+<pre><code>while True:
+
+    taend_mix()
+
+    taend_red()
+
+    sluk()
+
+    taend_green()
+
+    sluk()
+
+    taend_blue()
+
+    sluk()</code></pre>
+
+            <button class="kommentar-plads">
+                🧩 Placér kommentar her
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<p>
+    <button class="knap" id="tjekPuslespil">
+        Tjek mine svar
+    </button>
+
+    <button class="knap" id="nulstilPuslespil">
+        Start forfra
+    </button>
+</p>
+
+
+<div id="puslespilFeedback"></div>
+
+</section>
+
+
+
+
 
 <section class="blok projekt">
             <h2>Lidt lir "Neopixels"</h2>
@@ -966,6 +1190,223 @@ while True:
     <footer>
         <p>Lavet som en del af Programmering C</p>
     </footer>
+
+<script>
+
+let valgtBrik = null;
+
+
+/* =========================================================
+   BLAND KOMMENTARERNE
+   ========================================================= */
+
+const kommentarOmraade = document.getElementById("kommentarer");
+
+const brikker = Array.from(
+    kommentarOmraade.querySelectorAll(".puslebrik")
+);
+
+
+/* Fisher-Yates shuffle */
+
+for (let i = brikker.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [brikker[i], brikker[j]] =
+        [brikker[j], brikker[i]];
+
+}
+
+
+brikker.forEach(brik => {
+
+    kommentarOmraade.appendChild(brik);
+
+});
+
+
+
+/* =========================================================
+   VÆLG EN PUSLEBRIK
+   ========================================================= */
+
+document.querySelectorAll(".puslebrik").forEach(brik => {
+
+    brik.addEventListener("click", function () {
+
+        document.querySelectorAll(".puslebrik")
+            .forEach(b => b.classList.remove("valgt"));
+
+
+        valgtBrik = this;
+
+        this.classList.add("valgt");
+
+    });
+
+});
+
+
+
+/* =========================================================
+   PLACÉR BRIKKEN VED KODEN
+   ========================================================= */
+
+document.querySelectorAll(".kommentar-plads").forEach(plads => {
+
+    plads.addEventListener("click", function () {
+
+        if (!valgtBrik) {
+
+            alert("Vælg først en puslespilsbrik.");
+
+            return;
+
+        }
+
+
+        /* Hvis der allerede ligger en kommentar */
+
+        const gammelId = this.dataset.svar;
+
+
+        if (gammelId) {
+
+            const gammelBrik =
+                document.querySelector(
+                    '.puslebrik[data-svar="' + gammelId + '"]'
+                );
+
+            gammelBrik.style.display = "block";
+
+        }
+
+
+        /* Placér ny kommentar */
+
+        this.textContent = valgtBrik.textContent;
+
+        this.dataset.svar =
+            valgtBrik.dataset.svar;
+
+
+        valgtBrik.style.display = "none";
+
+        valgtBrik.classList.remove("valgt");
+
+        valgtBrik = null;
+
+    });
+
+});
+
+
+
+/* =========================================================
+   TJEK SVAR
+   ========================================================= */
+
+document.getElementById("tjekPuslespil")
+    .addEventListener("click", function () {
+
+
+        let antalRigtige = 0;
+
+        const kodeDele =
+            document.querySelectorAll(".kode-del");
+
+
+        kodeDele.forEach(del => {
+
+            del.classList.remove(
+                "rigtig",
+                "forkert"
+            );
+
+
+            const korrektSvar =
+                del.dataset.korrekt;
+
+
+            const elevSvar =
+                del.querySelector(".kommentar-plads")
+                   .dataset.svar;
+
+
+            if (elevSvar === korrektSvar) {
+
+                del.classList.add("rigtig");
+
+                antalRigtige++;
+
+            } else {
+
+                del.classList.add("forkert");
+
+            }
+
+        });
+
+
+
+        const feedback =
+            document.getElementById("puslespilFeedback");
+
+
+        if (antalRigtige === kodeDele.length) {
+
+            feedback.innerHTML = `
+                🎉 Alle ${antalRigtige} kommentarer er placeret korrekt!
+
+                <br><br>
+
+                Du har nu forklaret de vigtigste dele af programmet.
+
+                <br>
+
+                Næste skridt er at skrive forklaringerne
+                som kommentarer direkte i Python-koden med <code>#</code>.
+            `;
+
+            feedback.style.background = "#d1fae5";
+
+        }
+
+        else {
+
+            feedback.innerHTML = `
+                Du har ${antalRigtige}
+                ud af ${kodeDele.length} rigtige.
+
+                <br>
+
+                Grønne felter er korrekte.
+                Kig igen på de røde.
+            `;
+
+            feedback.style.background = "#fff3a0";
+
+        }
+
+    });
+
+
+
+/* =========================================================
+   START FORFRA
+   ========================================================= */
+
+document.getElementById("nulstilPuslespil")
+    .addEventListener("click", function () {
+
+
+        location.reload();
+
+    });
+
+</script>
+
 
 </body>
 </html>
