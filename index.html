@@ -550,6 +550,21 @@ while True:
                 VCC og GND forbindes til strømforsyningen, mens TRIG bruges til at sende ultralydspulser, og ECHO bruges til at modtage de reflekterede pulser.
                 <h4>Pseudokode til måling af afstand</h4>
                  
+                <p>Step 1: Hent relevante biblioteker.    ------   import time
+                                                                   import machine
+                                                                from machine import Pin   </p> 
+                
+                
+                <p>initialiser trigger og echo pins----------- trig_pin = Pin(7, Pin.OUT)
+                                                                Echo_pin = Pin(6, Pin.IN)</p>
+
+                <p>initialser andrepin og globale variabler</p>
+                
+
+                <p>Step 1: Sæt trigger pin lav i 2 mikrosekunder.</p> 
+
+
+
                 <p>Step 1: Sæt trigger pin lav i 2 mikrosekunder.</p> 
                 <p>Step 2: Sæt trigger pin høj i 10 mikrosekunder.</p>
                 <p>Step 3: sæt trigger pin lav igen.</p>
@@ -696,6 +711,8 @@ while True:
             <p>
                 Her skal I lave et lille program så I kan bruge en knap til at styre en LED.
                 <h4>Pseudokode til at styre en LED med en knap</h4>
+
+
                 
                 <p>Step 1: Initialiser knap og LED.</p>
                 <p>Step 2: Vent på, at knappen bliver trykket ned.</p>
