@@ -568,7 +568,9 @@ while True:
 
 
 
-                <p>Step 1: Sæt trigger pin lav i 2 mikrosekunder.</p> 
+                <p>Step 1: Sæt trigger pin lav i 2 mikrosekunder.  ------ trig_pin.value(0)
+                                                                        time.sleep_us(2)
+                </p> 
                 <p>Step 2: Sæt trigger pin høj i 10 mikrosekunder.</p>
                 <p>Step 3: sæt trigger pin lav igen.</p>
                 <p>Step 4: registrer tiden for hvor ECHO pin er høj.</p>
